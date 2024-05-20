@@ -49,7 +49,7 @@ export class App {
   private setupRoutes() {
     this.app.use("/v1", router);
     this.app.get("/", (req: Request, res: Response) => {
-      return res.status(200).send("Hello, Ubuntu!");
+      return res.status(200).send("Hello, elocuencia!");
     });
   }
 }
