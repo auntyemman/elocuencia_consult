@@ -48,7 +48,6 @@ export class UserRepository {
 
   async updateBalance(id: string, amountToAdd: any): Promise<IUser> {
     const user = await User.findById(id);
-    console.log(amountToAdd);
     if (!user) {
       throw new NotFoundError("User not found");
     }
@@ -61,7 +60,7 @@ export class UserRepository {
   async getUserByReferralCode(referralCode: string): Promise<IUser> {
     const user = await User.findOne({ referralCode });
     if (!user) {
-      throw new NotFoundError("User not found");
+      throw new NotFoundError("User not found with the referral code");
     }
     return user;
   }
@@ -72,11 +71,11 @@ export class UserRepository {
     }
     return user;
   }
-  async getByEmail(email: string): Promise<IUser | null> {
+  async getByEmail(email: string): Promise<any> {
     const user = await User.findOne({ email });
     if (!user) {
       return null;
-      //throw new NotFoundError('User not found');
+      // throw new NotFoundError('User not found');
     }
     return user;
   }
