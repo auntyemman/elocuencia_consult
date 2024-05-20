@@ -82,7 +82,12 @@ export class AuthService {
     return await this.userRepo.updateBalance(user._id as string, amountToAdd);
   }
 
-  async withdrawFunds(userId: string, amount: number, accountNumber: string, bankCode: string): Promise<any> {
+  async withdrawFunds(
+    userId: string,
+    amount: number,
+    accountNumber: string,
+    bankCode: string,
+  ): Promise<any> {
     const user = await this.userRepo.getOne(userId);
     if (user.balance < amount) {
       throw new BadRequestError("Insufficient balance");
